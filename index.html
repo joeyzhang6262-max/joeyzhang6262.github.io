@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>张睿 · 金融量化主页 | 中英切换</title>
-    <!-- 使用简单干净的字体，完全网页端可构建，无依赖 -->
+    <!-- 无外部依赖，完全网页端可构建 -->
     <style>
         * {
             margin: 0;
@@ -70,7 +70,6 @@
             color: #0f2b3d;
             border-color: white;
         }
-        /* 默认激活中文，JS负责切换active类并更新内容 */
         .lang-btn:first-child.active {
             background: white;
             color: #0f2b3d;
@@ -79,7 +78,6 @@
             background: white;
             color: #0f2b3d;
         }
-        /* 默认第一个激活，第二个非激活（灰色） */
         .content {
             padding: 2.5rem;
         }
@@ -129,36 +127,6 @@
             color: #1f2a3f;
             font-weight: 500;
         }
-        .badge-container {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.6rem 1rem;
-            margin-top: 0.4rem;
-        }
-        .badge {
-            background: #e9edf4;
-            padding: 0.4rem 1rem;
-            border-radius: 40px;
-            font-size: 0.9rem;
-            font-weight: 500;
-            color: #0f2b3d;
-            border-left: 3px solid #2a7faa;
-        }
-        .edu-item {
-            margin-bottom: 1.5rem;
-        }
-        .edu-title {
-            font-weight: 700;
-            font-size: 1.1rem;
-            color: #0f2b3d;
-        }
-        .edu-meta {
-            color: #4f5f77;
-            font-size: 0.9rem;
-            margin: 0.2rem 0 0.25rem 0;
-            display: flex;
-            gap: 1rem;
-        }
         .intro-text {
             background: #f1f6fd;
             padding: 1.5rem 2rem;
@@ -191,9 +159,6 @@
             padding: 0.3rem 1.2rem;
             border-radius: 40px;
         }
-        .contact-icon {
-            font-size: 1.2rem;
-        }
         a {
             color: #0f2b3d;
             text-decoration: none;
@@ -202,17 +167,7 @@
         a:hover {
             text-decoration: underline;
         }
-        /* 中英文内容切换 (默认显示中文) */
-        .lang-content[data-lang="en"] {
-            display: none;
-        }
-        body.en .lang-content[data-lang="en"] {
-            display: block;
-        }
-        body.en .lang-content[data-lang="zh"] {
-            display: none;
-        }
-        /* 对于没有使用data-lang包裹的内文，我们需要用类隐藏 */
+        /* 中英文切换 */
         .zh-only {
             display: inline;
         }
@@ -224,11 +179,6 @@
         }
         body.en .en-only {
             display: inline;
-        }
-        /* 方便部分独立字段 */
-        .switch-text {
-            display: flex;
-            flex-direction: column;
         }
         @media (max-width: 650px) {
             .grid-2 {
@@ -247,7 +197,7 @@
 </head>
 <body>
     <div class="card">
-        <!-- 头部：姓名 + 切换按钮 (已更新为张睿) -->
+        <!-- 头部：姓名 张睿 -->
         <div class="header-bar">
             <h1>
                 <span class="zh-only">张睿 · 金融量化</span>
@@ -259,7 +209,7 @@
             </div>
         </div>
 
-        <!-- 主体内容，根据body类切换显示 -->
+        <!-- 主体内容：仅保留基本信息、个人简介、最后更新日期 -->
         <div class="content">
             <!-- ========= 基本信息 section ========= -->
             <div class="section">
@@ -284,7 +234,7 @@
                             <span class="info-value"><span class="zh-only">金融，量化交易</span><span class="en-only">Finance, Quantitative Trading</span></span>
                         </div>
                     </div>
-                    <!-- 右侧 联系方式 (已更新) -->
+                    <!-- 右侧 联系方式 -->
                     <div>
                         <div class="info-item">
                             <span class="info-label">📧 <span class="zh-only">邮箱</span><span class="en-only">Email</span></span>
@@ -304,7 +254,7 @@
                 </div>
             </div>
 
-            <!-- ========= 个人简介 section (已按数量金融专业修改) ========= -->
+            <!-- ========= 个人简介 section ========= -->
             <div class="section">
                 <div class="section-title">
                     📝 
@@ -312,7 +262,7 @@
                     <span class="en-only">Profile</span>
                 </div>
                 <div class="intro-text">
-                    <!-- 中文简介 (贴合数量金融/量化交易) -->
+                    <!-- 中文简介 (数量金融/量化交易) -->
                     <div class="zh-only">
                         🚀 华东政法大学数量金融专业在读，具备扎实的数学、统计与金融建模基础。熟悉量化交易策略回测、风险管理及金融数据分析。熟练使用Python进行数据清洗、因子分析和策略实现。对市场微观结构、统计套利有浓厚兴趣，追求用严谨的量化思维解构金融市场。
                     </div>
@@ -323,89 +273,24 @@
                 </div>
             </div>
 
-            <!-- ========= 技能 section (添加量化相关技能) ========= -->
-            <div class="section">
-                <div class="section-title">
-                    ⚙️ 
-                    <span class="zh-only">技能</span>
-                    <span class="en-only">Skills</span>
-                </div>
-                <div class="badge-container">
-                    <span class="badge">Python (NumPy, Pandas)</span>
-                    <span class="badge">量化回测 (Backtrader)</span>
-                    <span class="badge">R / 时间序列分析</span>
-                    <span class="badge">SQL / 数据库查询</span>
-                    <span class="badge">金融建模 / 衍生品定价</span>
-                    <span class="badge">统计套利 / 因子模型</span>
-                    <span class="badge">MATLAB / 数值计算</span>
-                    <span class="badge"><span class="zh-only">风险管理 (VaR, CVaR)</span><span class="en-only">Risk Management (VaR, CVaR)</span></span>
-                    <span class="badge"><span class="zh-only">中英双语 / 学术写作</span><span class="en-only">Bilingual / Academic Writing</span></span>
-                </div>
-                <!-- 技能补充描述 中英 增加量化工具 -->
-                <div style="margin-top: 1rem; color: #345; font-size:0.95rem; background:#f8faff; padding:0.8rem 1.2rem; border-radius:16px;">
-                    <span class="zh-only">★ 熟练使用Wind、Tushare获取金融数据；Git版本控制；完全GitHub网页端可维护</span>
-                    <span class="en-only">★ Proficient in Wind, Tushare for financial data; Git version control; fully maintainable via GitHub web interface</span>
-                </div>
-            </div>
-
-            <!-- ========= 教育经历/课程经历 (突出数量金融) ========= -->
-            <div class="section">
-                <div class="section-title">
-                    🏫 
-                    <span class="zh-only">教育经历 & 重点课程</span>
-                    <span class="en-only">Education & Key Courses</span>
-                </div>
-                <div class="edu-item">
-                    <div class="edu-title">
-                        <span class="zh-only">华东政法大学 商学院 · 数量金融专业</span>
-                        <span class="en-only">ECUPL, School of Business · Quantitative Finance</span>
-                    </div>
-                    <div class="edu-meta">
-                        <span>2023 - 2027</span>
-                        <span>▪️ <span class="zh-only">理学学士 (预期)</span><span class="en-only">B.Sc. (expected)</span></span>
-                    </div>
-                    <div style="margin-top: 6px; background: #f6f9ff; padding: 0.5rem 1rem; border-radius: 20px;">
-                        <span style="font-weight:500;">📘 <span class="zh-only">核心课程：</span><span class="en-only">Core courses:</span></span> 
-                        <span class="zh-only">金融计量学、时间序列分析、随机过程、量化交易策略、固定收益证券、Python金融数据分析</span>
-                        <span class="en-only">Financial Econometrics, Time Series Analysis, Stochastic Processes, Quantitative Trading Strategies, Fixed Income, Python for Finance</span>
-                    </div>
-                </div>
-                <div class="edu-item" style="margin-bottom:0;">
-                    <div class="edu-title">
-                        <span class="zh-only">竞赛/项目经历</span>
-                        <span class="en-only">Projects & Competitions</span>
-                    </div>
-                    <div class="edu-meta">
-                        <span>2024 - 2025</span>
-                        <span>▪️ 全国大学生统计建模大赛 省二等奖</span>
-                    </div>
-                    <div style="margin-top: 6px; color: #3e4e64;">
-                        <span class="zh-only">📊 基于多因子模型的股票超额收益预测 (Python实现) </span>
-                        <span class="en-only">📊 Multi-factor model for stock excess return prediction (Python)</span>
-                    </div>
-                </div>
-            </div>
-
             <!-- ========= 最后更新日期 ========= -->
             <div class="update-footer" id="last-updated">
-                <!-- 动态通过JS注入日期，同时保留中英格式 -->
+                <!-- 动态通过JS注入日期 -->
             </div>
         </div>
     </div>
 
     <script>
         (function() {
-            // 获取按钮和body
             const btnZh = document.getElementById('btn-zh');
             const btnEn = document.getElementById('btn-en');
             const body = document.body;
 
-            // 初始状态: 中文界面(移除en类保证中文) 并且中文按钮激活样式,英文按钮非激活
+            // 初始状态: 中文
             body.classList.remove('en');
             btnZh.classList.add('active');
             btnEn.classList.remove('active');
 
-            // 语言切换函数
             function setLanguage(lang) {
                 if (lang === 'en') {
                     body.classList.add('en');
@@ -416,11 +301,9 @@
                     btnZh.classList.add('active');
                     btnEn.classList.remove('active');
                 }
-                // 更新最后更新日期文本(中英切换时)
                 updateDateText(lang);
             }
 
-            // 显示最后更新日期(可中英)
             function updateDateText(lang) {
                 const footer = document.getElementById('last-updated');
                 const today = new Date();
@@ -436,26 +319,12 @@
                 }
             }
 
-            // 监听按钮
-            btnZh.addEventListener('click', () => {
-                setLanguage('zh');
-            });
-            btnEn.addEventListener('click', () => {
-                setLanguage('en');
-            });
+            btnZh.addEventListener('click', () => setLanguage('zh'));
+            btnEn.addEventListener('click', () => setLanguage('en'));
 
-            // 初始化日期 (中文)
+            // 初始化中文日期
             updateDateText('zh');
-
-            // 可选：根据初始body是否有en来决定日期语言, 但默认没有en, 所以中文
-            if (body.classList.contains('en')) {
-                updateDateText('en');
-            } else {
-                updateDateText('zh');
-            }
         })();
     </script>
-
-    <!-- 所有内容均已按张睿、华东政法大学数量金融、量化交易方向修改，邮箱和手机已更新 -->
 </body>
 </html>
